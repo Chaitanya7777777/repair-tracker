@@ -1,0 +1,203 @@
+/* ======== Global ======== */
+* {
+  box-sizing: border-box;
+}
+body {
+  font-family: "Inter", "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  margin: 0;
+  background: #f9fafc;
+  color: #111;
+  line-height: 1.6;
+}
+
+h1, h2, h3 {
+  color: #0a1f44;
+  margin-top: 0;
+}
+
+/* ======== Topbar ======== */
+.topbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 14px 24px;
+  background: linear-gradient(90deg, #0052cc, #0066ff);
+  color: white;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+.topbar .brand {
+  font-weight: 700;
+  font-size: 1.2rem;
+  letter-spacing: 0.5px;
+}
+.topbar nav a {
+  color: white;
+  margin-left: 20px;
+  text-decoration: none;
+  font-weight: 500;
+  transition: opacity 0.2s ease;
+}
+.topbar nav a:hover {
+  opacity: 0.8;
+}
+
+/* ======== Container & Layout ======== */
+.container {
+  padding: 24px;
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+.card {
+  background: white;
+  border-radius: 12px;
+  padding: 20px;
+  box-shadow: 0 2px 12px rgba(0,0,0,0.08);
+  margin-bottom: 20px;
+}
+
+/* ======== Forms ======== */
+input, select, textarea {
+  padding: 10px 12px;
+  border-radius: 8px;
+  border: 1px solid #d0d7de;
+  font-size: 0.95rem;
+  width: 100%;
+  max-width: 400px;
+}
+
+input:focus, select:focus, textarea:focus {
+  outline: none;
+  border-color: #0066ff;
+  box-shadow: 0 0 0 2px rgba(0,102,255,0.2);
+}
+
+button {
+  background: #0066ff;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  padding: 10px 14px;
+  font-size: 0.9rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background 0.25s ease;
+}
+button:hover:not(:disabled) {
+  background: #0052cc;
+}
+button:disabled {
+  background: #b3b3b3;
+  cursor: not-allowed;
+}
+
+.form-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-bottom: 14px;
+}
+
+.form-col {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  max-width: 420px;
+}
+
+/* ======== Tables ======== */
+.job-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.9rem;
+}
+.job-table th {
+  background: #f1f5ff;
+  color: #0a1f44;
+  text-align: left;
+  padding: 10px;
+  border-bottom: 2px solid #e0e0e0;
+}
+.job-table td {
+  padding: 10px;
+  border-bottom: 1px solid #eee;
+  vertical-align: top;
+}
+.job-table tr:hover {
+  background: #fafcff;
+}
+
+/* ======== Timeline ======== */
+.timeline {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin: 16px 0;
+}
+.step {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  position: relative;
+}
+.circle {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #d0d7de;
+  color: #333;
+  font-weight: 600;
+  transition: background 0.3s ease;
+}
+.step.active .circle {
+  background: #0066ff;
+  color: white;
+}
+.bar {
+  width: 70px;
+  height: 4px;
+  background: #d0d7de;
+  border-radius: 4px;
+  transition: background 0.3s ease;
+}
+.step.active + .step .bar {
+  background: #0066ff;
+}
+
+/* ======== Messages ======== */
+.error {
+  color: #c62828;
+  background: #ffebee;
+  border: 1px solid #ffcdd2;
+  padding: 8px 12px;
+  border-radius: 6px;
+  max-width: 400px;
+}
+
+.success {
+  color: #1b5e20;
+  background: #e8f5e9;
+  border: 1px solid #c8e6c9;
+  padding: 8px 12px;
+  border-radius: 6px;
+}
+
+/* ======== Responsiveness ======== */
+@media (max-width: 700px) {
+  .topbar nav a {
+    margin-left: 12px;
+  }
+  .timeline .bar {
+    width: 40px;
+  }
+  .job-table th, .job-table td {
+    padding: 8px;
+    font-size: 0.85rem;
+  }
+  .form-col, .form-row {
+    max-width: 100%;
+  }
+}
