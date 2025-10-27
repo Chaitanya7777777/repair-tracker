@@ -41,6 +41,42 @@ It’s designed as a **hackathon-friendly prototype** — clean, functional, and
 
 ---
 
+## 🧠 How It Works
+
+The system operates in real time using **Socket.IO**, connecting customers and admins seamlessly.
+
+1. **Job Creation (Admin)**  
+   - The admin creates a repair job via the dashboard.  
+   - The backend generates a unique `trackingId` using NanoID.  
+   - Job details are stored in an in-memory list (for MVP).
+
+2. **Tracking (Customer)**  
+   - The customer enters their tracking ID on the tracking page.  
+   - The frontend fetches the job details via REST API.  
+   - The frontend then joins a **Socket.IO room** named after that `trackingId`.
+
+3. **Status Update (Admin → Customer)**  
+   - The admin updates the repair status (e.g., *repairing*, *completed*).  
+   - The backend updates the job data and emits a `status_update` event to that tracking room.
+
+4. **Live Sync (Socket.IO)**  
+   - The customer’s page listens for `status_update` events.  
+   - When an update occurs, the status changes instantly on their screen without refresh.
+
+> 💾 Currently, job data is stored **in memory** (not persistent).  
+> For production, integrate MongoDB or PostgreSQL for permanent storage.
+
+---
+
+## 🔐 Admin Access (MVP)
+
+To access the admin dashboard:
+
+- Visit: `http://localhost:5173/admin`  
+- Default password: `hackathon123`  
+- Changeable inside: `frontend/src/pages/AdminPage.jsx`  
+  ```js
+  const ADMIN_PASSWORD = "hackathon123";
 ## ⚙️ Setup Instructions
 
 > The app has **two parts**: backend (API + sockets) and frontend (React app).  
@@ -48,5 +84,18 @@ It’s designed as a **hackathon-friendly prototype** — clean, functional, and
 
 ### 1️⃣ Clone the Repository
 ```bash
-git clone https://github.com/YOUR_USERNAME/repair-tracker.git
+git clone https://github.com/Chaitanya7777777/repair-tracker.git
 cd repair-tracker
+```
+### 2️⃣ Backend Setup
+```bash
+cd backend
+npm install
+npm run dev
+```
+### 3️⃣ Frontend Setup
+```bash
+cd ../frontend
+npm install
+npm run dev
+```
